@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GibDD.MainPage"
+             Title="Список профилей"
+             x:Name="_MainPage"
+             >
+    
+
+    <StackLayout Padding="10" BackgroundColor="#C561D3" >
+        <ListView
+            x:Name="profilesList"
+            HasUnevenRows="True"
+            ItemTapped="profilesList_ItemTapped"
+            ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*" />
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="90" />
+                            </Grid.RowDefinitions>
+                            <StackLayout VerticalOptions="Center" Grid.Column="0" Grid.Row="0" Spacing="0">
+
+                                <Label VerticalTextAlignment="Center" Text="{Binding Surname}" FontSize="Small" TextColor="#330570"/>
+                                <Label VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Small" />
+                                <Label VerticalTextAlignment="Center" Text="{Binding Patronymic}" FontSize="Small" />
+                                <Label VerticalTextAlignment="Center" Text="{Binding Region}" FontSize="Small" />
+                            </StackLayout>
+                            <Button Text="Изменить" FontSize="Small" Margin="0,20" CommandParameter="{Binding .}"
+                                    Grid.Column="1" Grid.Row="0" BackgroundColor="#8C003D" TextColor="#EB6AA3"
+                                    Command="{Binding Source={x:Reference _MainPage}, Path=EditProfile}" />
+                            <Button Text="Выбрать" FontSize="Small" Margin="0,20" CommandParameter="{Binding .}"
+                                    Grid.Column="2" Grid.Row="0"
+                                    Command="{Binding Source={x:Reference _MainPage}, Path=SelectProfile}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Добавить" Clicked="CreateProfile" />
+    </StackLayout>
+
+</ContentPage>

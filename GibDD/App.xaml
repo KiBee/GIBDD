@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GibDD.App">
+    <Application.Resources>
+        <Style TargetType="NavigationPage">
+
+            <Setter Property="BarBackgroundColor" Value="#60016D" />
+            <Setter Property="BarTextColor" Value="#996AD6" />
+
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="#C561D3" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#330570" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#8C003D" />
+            <Setter Property="TextColor" Value="#EB6AA3" />
+        </Style>
+        <Style TargetType="Entry">
+            <Style.Triggers>
+                <Trigger Property="Entry.IsFocused" Value="True" TargetType="Entry">
+
+                    <Setter Property="BackgroundColor" Value="#C561D3" />
+                    <Setter Property="TextColor" Value="#8C003D" />
+
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="BackgroundColor" Value="#C561D3" />
+            <Setter Property="TextColor" Value="#8C003D" />
+        </Style>
+
+        <Style TargetType="Editor">
+            <Style.Triggers>
+                <Trigger Property="Editor.IsFocused" Value="True" TargetType="Editor">
+
+                    <Setter Property="BackgroundColor" Value="#C561D3" />
+                    <Setter Property="TextColor" Value="#8C003D" />
+
+                </Trigger>
+            </Style.Triggers>
+
+
+            <Setter Property="BackgroundColor" Value="#C561D3" />
+            <Setter Property="TextColor" Value="#8C003D" />
+        </Style>
+        
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#C561D3" />
+
+        </Style>
+
+
+    </Application.Resources>
+</Application>

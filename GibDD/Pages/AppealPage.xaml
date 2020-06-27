@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GibDD.Pages.AppealPage"
+             x:Name="_AppealPage"
+             Title="Обращение">
+
+
+
+    <StackLayout Padding="10">
+
+        <Editor HeightRequest="200" Placeholder="Введите текст обращения" x:Name="AppealEditor"
+                TextChanged="ChangeAppealsText" />
+
+
+        <ListView
+            x:Name="appealsList"
+            HasUnevenRows="True"
+            ItemTapped="appealsList_ItemTapped"
+            ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="4*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70" />
+                            </Grid.RowDefinitions>
+                            <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                                <ScrollView>
+                                    <Label VerticalTextAlignment="Start" Text="{Binding Text}" FontSize="Small"
+                                           Padding="5" />
+                                </ScrollView>
+                            </StackLayout>
+                            <Button Text="Удалить" Grid.Column="1" Grid.Row="0" Margin="5"
+                                    CommandParameter="{Binding .}"
+                                    FontSize="Small"
+                                    Command="{Binding Source={x:Reference _AppealPage}, Path=DeleteAppeal}" />
+                            <Button Text="Выбрать" Grid.Column="2" Grid.Row="0" Margin="5"
+                                    CommandParameter="{Binding .}"
+                                    FontSize="Small"
+                                    Command="{Binding Source={x:Reference _AppealPage}, Path=SelectAppeal}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Далее" Clicked="AddPhotos" IsEnabled="False" x:Name="ContinueButton" />
+    </StackLayout>
+</ContentPage>

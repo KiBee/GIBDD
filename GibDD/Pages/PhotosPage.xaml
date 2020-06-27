@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GibDD.Pages.PhotosPage"
+             x:Name="_PhotosPage"
+             Title="Прикрепить файл">
+    
+    <StackLayout>
+        <ListView x:Name="photosList"
+                ItemsSource="{Binding _MainModel.selectedPhotos, Mode=TwoWay}"
+                ItemTapped="OpenFullPhoto"
+                RowHeight="70"
+                CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="75" />
+                            </Grid.RowDefinitions>
+                            <Frame Grid.Column="0" Grid.Row="0" Padding="0">
+                                <Image Source="{Binding Image}" Aspect="AspectFit" />
+                            </Frame>
+                            <Button Grid.Column="1" Grid.Row="0" Text="Удалить" Margin="12" CommandParameter="{Binding .}" Command="{Binding Source={x:Reference _PhotosPage}, Path=DeletePhoto}" />
+                       </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Button Margin="10,0,0,0" x:Name="takePhoto" Grid.Column="0" Grid.Row="0" Text="Камера" />
+            <Button Margin="0,0,10,0" x:Name="pickPhoto" Grid.Column="1" Grid.Row="0" Text="Галерея" />
+            <Button Margin="10,0,10,10" IsEnabled="False" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1"  Text="Далее"  x:Name="ContinueButton" Clicked="ContinueClicked"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

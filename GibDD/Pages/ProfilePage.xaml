@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GibDD.Pages.ProfilePage" Title="Профиль"
+             x:Name="_ProfilePage">
+
+    <StackLayout Padding="20">
+        <ScrollView>
+            <StackLayout>
+
+                <Label Text="Регион" />
+                <Picker x:Name="RegionPicker" SelectedIndexChanged="SelectRegion" />
+
+                <Label Text="Подразделение" />
+                <Picker x:Name="DivisionPicker"
+                        ItemsSource="{Binding Source={x:Reference _ProfilePage}, Path=Divisions}" />
+
+                <Label Text="Место события (регион)" />
+                <Picker x:Name="EvsRegionPicker" />
+
+
+                <!-- <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"> -->
+                <!-- -->
+                <!-- -->
+                <!--     <RadioButton Text="Гражданин"  IsChecked="True" /> -->
+                <!--     <RadioButton Text="Юр. лицо" /> -->
+                <!-- -->
+                <!-- -->
+                <!-- </StackLayout> -->
+
+
+                <Label Text="Фамилия" />
+                <Entry TextChanged="EntryChanged" x:Name="SurnameEntry" Text="{Binding Surname}" Placeholder="Фамилия" />
+
+                <Label Text="Имя" />
+                <Entry TextChanged="EntryChanged" x:Name="NameEntry" Text="{Binding Name}" Placeholder="Имя" />
+
+                <Label Text="Отчество" />
+                <Entry TextChanged="EntryChanged" x:Name="PatronymicEntry" Text="{Binding Patronymic}"
+                       Placeholder="Отчество" />
+
+
+                <Label Text="Email" />
+                <Entry TextChanged="EntryChanged" x:Name="EmailEntry" Text="{Binding Email}"
+                       Placeholder="your@email.com" />
+
+                <Label Text="Телефон" />
+                <Entry TextChanged="EntryChanged" x:Name="PhoneEntry" Text="{Binding Phone}"
+                       Placeholder="+7 (XXX) XXX-XX-XX" />
+
+
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button Text="Сохранить" Clicked="SaveProfile" />
+            <Button Text="Удалить" Clicked="DeleteProfile" />
+            <Button Text="Отмена" Clicked="Cancel" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
